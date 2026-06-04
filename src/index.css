@@ -1,0 +1,425 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Caveat:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* Fonts */
+  --font-sans: "Outfit", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-script: "Caveat", cursive;
+
+  /* Colors mapped exactly to the glowing multi-chromatic Immersive UI spec, styled in classic TED style */
+  --color-primary: #e62b1e;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #b91c1c;
+  --color-on-primary-container: #fee2e2;
+  --color-primary-fixed: #fee2e2;
+  --color-primary-fixed-dim: #fca5a5;
+  --color-on-primary-fixed: #050508;
+  --color-on-primary-fixed-variant: #7f1d1d;
+
+  --color-secondary: #a1a1aa;
+  --color-on-secondary: #050508;
+  --color-secondary-container: #18181b;
+  --color-on-secondary-container: #f4f4f5;
+  --color-secondary-fixed: #e4e4e7;
+  --color-secondary-fixed-dim: #cbd5e1;
+  --color-on-secondary-fixed: #0f172a;
+  --color-on-secondary-fixed-variant: #3f3f46;
+
+  --color-tertiary: #dc2626;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #450a0a;
+  --color-on-tertiary-container: #fee2e2;
+  --color-tertiary-fixed: #fecaca;
+  --color-tertiary-fixed-dim: #fca5a5;
+  --color-on-tertiary-fixed: #450a0a;
+  --color-on-tertiary-fixed-variant: #991b1b;
+
+  --color-surface: #000000;
+  --color-on-surface: #ffffff;
+  --color-surface-dim: #050508;
+  --color-surface-bright: #121214;
+  --color-surface-container-lowest: #000000;
+  --color-surface-container-low: #0a0a0c;
+  --color-surface-container: #121215;
+  --color-surface-container-high: #1a1a1f;
+  --color-surface-container-highest: #26262b;
+  --color-surface-variant: #18181b;
+  --color-on-surface-variant: #e4e4e7;
+  
+  --color-background: #000000;
+  --color-on-background: #ffffff;
+
+  --color-outline: #27272a;
+  --color-outline-variant: #18181b;
+  --color-surface-tint: #e62b1e;
+
+  --color-error: #ef4444;
+  --color-on-error: #ffffff;
+  --color-error-container: #7f1d1d;
+  --color-on-error-container: #fca5a5;
+
+  --color-inverse-surface: #f8fafc;
+  --color-inverse-on-surface: #0f172a;
+  --color-inverse-primary: #4f46e5;
+
+  /* Custom Spacing Variables */
+  --spacing-gutter: 24px;
+  --spacing-margin-mobile: 20px;
+  --spacing-margin-desktop: 64px;
+  --spacing-max-width: 1280px;
+}
+
+/* Base custom classes to support elegant smooth transitions, raw editorial layout and clean typography */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: #000000;
+  background-image: 
+    radial-gradient(circle at 80% 10%, rgba(230, 43, 30, 0.12) 0%, transparent 60%), 
+    radial-gradient(circle at 10% 90%, rgba(24, 24, 27, 0.4) 0%, transparent 50%);
+  color: #ffffff;
+  font-family: var(--font-sans);
+}
+
+/* Atmospheric grid-dot overlay */
+.cosmic-mesh {
+  background-image: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Custom glass paneling */
+.glass-panel {
+  background: rgba(20, 20, 25, 0.7);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.glass-panel-heavy {
+  background: rgba(8, 8, 10, 0.95);
+  backdrop-filter: blur(32px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Custom editorial effects */
+.transition-soft { 
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); 
+}
+
+/* Modern clean scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+::-webkit-scrollbar-thumb {
+  background: #18181b;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #e62b1e;
+}
+
+/* Light theme configuration and dynamic overrides */
+body.light {
+  background-color: #fafafb;
+  background-image: 
+    radial-gradient(circle at 80% 10%, rgba(230, 43, 30, 0.04) 0%, transparent 60%), 
+    radial-gradient(circle at 10% 90%, rgba(228, 228, 231, 0.4) 0%, transparent 50%);
+  color: #181c20;
+  
+  --color-background: #fafafb;
+  --color-on-background: #181c20;
+  --color-surface: #ffffff;
+  --color-on-surface: #181c20;
+  --color-surface-dim: #f4f4f6;
+  --color-surface-bright: #ffffff;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f4f4f6;
+  --color-surface-container: #eaeaea;
+  --color-surface-container-high: #e2e2e5;
+  --color-surface-container-highest: #d2d2d5;
+  --color-surface-variant: #f4f4f6;
+  --color-on-surface-variant: #18191b;
+  --color-outline: #e4e4e7;
+  --color-outline-variant: #cbd5e1;
+  --color-secondary: #52525b;
+}
+
+body.light ::-webkit-scrollbar-track {
+  background: #f4f4f6;
+}
+
+body.light ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+}
+
+/* Selector-level overrides for dark hardcoded styles */
+body.light .bg-\[\#050508\] {
+  background-color: #fafafb !important;
+}
+body.light .bg-\[\#020202\] {
+  background-color: #ffffff !important;
+}
+body.light .bg-\[\#030305\] {
+  background-color: #f4f4f7 !important;
+}
+body.light .bg-surface\/40,
+body.light .bg-surface\\\/40 {
+  background-color: rgba(244, 244, 246, 0.45) !important;
+}
+body.light .bg-zinc-950 {
+  background-color: #ffffff !important;
+}
+body.light .bg-\[\#08080c\] {
+  background-color: #ffffff !important;
+}
+body.light .bg-\[\#0a0a0c\] {
+  background-color: #f4f4f6 !important;
+}
+body.light .bg-slate-950\/90,
+body.light .bg-slate-950\\\/90 {
+  background-color: rgba(255, 255, 255, 0.98) !important;
+}
+body.light .bg-\[\#050508\]\/65,
+body.light .bg-\[\#050508\]\\\/65 {
+  background-color: rgba(250, 250, 251, 0.75) !important;
+}
+body.light .bg-\[\#020202\]\/80,
+body.light .bg-\[\#020202\]\\\/80 {
+  background-color: rgba(255, 255, 255, 0.85) !important;
+}
+body.light .border-zinc-900 {
+  border-color: #eaeaea !important;
+}
+body.light .border-zinc-850 {
+  border-color: #e4e4e7 !important;
+}
+body.light .border-zinc-800 {
+  border-color: #eaeaea !important;
+}
+body.light .border-zinc-800\/80,
+body.light .border-zinc-800\\\/80 {
+  border-color: #eaeaea !important;
+}
+body.light .border-white\/5,
+body.light .border-white\\\/5 {
+  border-color: rgba(9, 9, 11, 0.06) !important;
+}
+body.light .border-white\/10,
+body.light .border-white\\\/10 {
+  border-color: rgba(9, 9, 11, 0.08) !important;
+}
+body.light .border-outline-variant\/30,
+body.light .border-outline-variant\\\/30 {
+  border-color: rgba(9, 9, 11, 0.08) !important;
+}
+body.light .border-zinc-900\/10,
+body.light .border-zinc-900\\\/10 {
+  border-color: rgba(9, 9, 11, 0.06) !important;
+}
+body.light .bg-white\/5,
+body.light .bg-white\\\/5 {
+  background-color: rgba(9, 9, 11, 0.04) !important;
+}
+body.light .bg-white\/10,
+body.light .bg-white\\\/10 {
+  background-color: rgba(9, 9, 11, 0.06) !important;
+}
+body.light .bg-zinc-950\/20,
+body.light .bg-zinc-950\\\/20 {
+  background-color: rgba(9, 9, 11, 0.03) !important;
+}
+body.light .bg-zinc-950\/30,
+body.light .bg-zinc-950\\\/30 {
+  background-color: rgba(9, 9, 11, 0.04) !important;
+}
+body.light .bg-zinc-950\/40,
+body.light .bg-zinc-950\\\/40 {
+  background-color: rgba(9, 9, 11, 0.05) !important;
+}
+body.light .bg-zinc-950\/50,
+body.light .bg-zinc-950\\\/50 {
+  background-color: rgba(9, 9, 11, 0.07) !important;
+}
+body.light .bg-zinc-950\/60,
+body.light .bg-zinc-950\\\/60 {
+  background-color: rgba(9, 9, 11, 0.09) !important;
+}
+body.light .bg-zinc-950\/80,
+body.light .bg-zinc-950\\\/80 {
+  background-color: rgba(9, 9, 11, 0.06) !important;
+}
+body.light .bg-primary\/5,
+body.light .bg-primary\\\/5 {
+  background-color: rgba(230, 43, 30, 0.03) !important;
+}
+body.light .bg-primary\/10,
+body.light .bg-primary\\\/10 {
+  background-color: rgba(230, 43, 30, 0.06) !important;
+}
+body.light .bg-black\/60,
+body.light .bg-black\\\/60 {
+  background-color: rgba(255, 255, 255, 0.6) !important;
+}
+body.light .bg-black\/10,
+body.light .bg-black\\\/10 {
+  background-color: rgba(9, 9, 11, 0.04) !important;
+}
+body.light .glass-panel {
+  background: rgba(255, 255, 255, 0.85) !important;
+  border-color: rgba(9, 9, 11, 0.06) !important;
+}
+body.light .glass-panel-heavy {
+  background: rgba(255, 255, 255, 0.98) !important;
+  border-color: rgba(9, 9, 11, 0.08) !important;
+}
+
+/* Hover States overrides */
+body.light .hover\:bg-zinc-950\/80:hover,
+body.light .hover\:bg-zinc-950\\\/80:hover {
+  background-color: rgba(9, 9, 11, 0.04) !important;
+}
+body.light .hover\:bg-zinc-900:hover {
+  background-color: #ededf1 !important;
+}
+body.light .hover\:bg-zinc-950:hover {
+  background-color: #f4f4f7 !important;
+}
+body.light .hover\:bg-white\/5:hover,
+body.light .hover\:bg-white\\\/5:hover {
+  background-color: rgba(9, 9, 11, 0.05) !important;
+}
+body.light .hover\:bg-zinc-950\/40:hover,
+body.light .hover\:bg-zinc-950\\\/40:hover {
+  background-color: rgba(9, 9, 11, 0.04) !important;
+}
+body.light .hover\:bg-zinc-100:hover {
+  background-color: #e2e2e5 !important;
+}
+body.light .group:hover .group-hover\:bg-zinc-950\/40,
+body.light .group:hover .group-hover\:bg-zinc-950\\\/40 {
+  background-color: rgba(9, 9, 11, 0.03) !important;
+}
+
+/* Typography styles */
+body.light .text-white {
+  color: #121214 !important;
+}
+body.light .text-white\/50,
+body.light .text-white\\\/50 {
+  color: #52525b !important;
+}
+body.light .text-white\/60,
+body.light .text-white\\\/60 {
+  color: #4b5563 !important;
+}
+body.light .text-white\/70,
+body.light .text-white\\\/70 {
+  color: #3f3f46 !important;
+}
+body.light .text-white\/80,
+body.light .text-white\\\/80 {
+  color: #27272a !important;
+}
+body.light .text-white\/90,
+body.light .text-white\\\/90 {
+  color: #121214 !important;
+}
+body.light .text-zinc-100 {
+  color: #121214 !important;
+}
+body.light .text-zinc-200 {
+  color: #1a1a1e !important;
+}
+body.light .text-zinc-300 {
+  color: #27272a !important;
+}
+body.light .text-zinc-400 {
+  color: #3f3f46 !important;
+}
+body.light .text-zinc-500 {
+  color: #52525b !important;
+}
+body.light .text-secondary {
+  color: #4b5563 !important;
+}
+body.light .text-on-surface {
+  color: #121214 !important;
+}
+
+/* Emerald badge overrides */
+body.light .bg-emerald-500\/10,
+body.light .bg-emerald-500\\\/10 {
+  background-color: rgba(4, 120, 87, 0.08) !important;
+  border-color: rgba(4, 120, 87, 0.25) !important;
+}
+body.light .text-emerald-300,
+body.light .text-emerald-400 {
+  color: #047857 !important;
+}
+
+/* Correct header buttons state behavior in Light Mode */
+body.light header button:not(.bg-primary):not(.bg-primary *) {
+  color: #4b5563 !important;
+}
+body.light header button:not(.bg-primary):not(.bg-primary *):hover {
+  color: #121214 !important;
+}
+body.light header button[class*="text-primary"],
+body.light header button[class*="border-primary"] {
+  color: #e62b1e !important;
+  border-color: #e62b1e !important;
+}
+
+/* Support active indicators and links */
+body.light .hover\:text-white:hover {
+  color: #121214 !important;
+}
+body.light .group:hover .group-hover\:text-white {
+  color: #121214 !important;
+}
+body.light .group:hover .group-hover\:text-zinc-200 {
+  color: #181c20 !important;
+}
+
+/* Preserve text readability inside primary buttons and explicit parent labels */
+body.light .bg-primary *,
+body.light .bg-red-500 *,
+body.light .bg-red-700 *,
+body.light button.bg-primary,
+body.light button.bg-primary * {
+  color: #ffffff !important;
+}
+
+/* Form element text fields adjustments */
+body.light input,
+body.light textarea,
+body.light select,
+body.light select option {
+  color: #121214 !important;
+  border-color: #cbd5e1 !important;
+  background-color: #ffffff !important;
+}
+body.light input::placeholder,
+body.light textarea::placeholder {
+  color: #a1a1aa !important;
+}
+
+/* Table notice cells color mapping */
+body.light td.text-zinc-400,
+body.light td.text-zinc-500 {
+  color: #3f3f46 !important;
+}
+
+/* Adjust cosmic background grids */
+body.light .cosmic-mesh {
+  background-image: radial-gradient(circle at 50% 50%, rgba(9, 9, 11, 0.03) 1px, transparent 1px);
+}
+
+
